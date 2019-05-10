@@ -11,17 +11,16 @@ class CalculatorController extends Controller
 	
 	protected $calculationImplementation;
 
-	public function __construct(CalculationInterface $calculationImplementation)
-    {
+	public function __construct(CalculationInterface $calculationImplementation){
         $this->calculationImplementation=$calculationImplementation;
     }
-    public function index() {
+    public function index(){
         
         return view('index');
     }
 
     public function calculate(Request $request){
-    	
+
     	$validatedData = $request->validate([
 	        'number1' => 'bail|required|numeric',
 	        'number2' => 'required|numeric',
