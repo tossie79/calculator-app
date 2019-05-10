@@ -3,12 +3,25 @@ namespace App\Repositories;
 
 use  App\Repositories\Contracts\CalculationInterface;
 
-class BitwiseOrCalculation implements CalculationInterface{
-
-	public function calculate($number1,$number2){
-		return ($number1 | $number2);
+class BitwiseOrCalculation implements CalculationInterface
+{
+	/**
+	 *This method does an bitwise or (|) calculation of 2 numbers
+	 *@return int
+     *
+    */
+	public function calculate($number1, $number2)
+	{
+		return($number1 | $number2);
 	}
-	public function getOperatorType(){
+	
+	/**
+	 *This method returns the type of operator 
+	 *@return string
+     *
+    */
+	public function getOperatorType()
+	{
 		return '|';
 	}
 }

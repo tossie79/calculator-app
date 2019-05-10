@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
@@ -7,6 +6,9 @@ use Illuminate\Http\Request;
 
 class AppServiceProvider extends ServiceProvider
 {
+	/**
+	* Array of the operators and their service classes
+    **/
     protected $operatorClassServices =  [
         'add'=>'AdditionCalculation',
         'subtract'=>'SubtractionCalculation',
@@ -14,7 +16,6 @@ class AppServiceProvider extends ServiceProvider
         'divide'=>'DivisionCalculation',
         'bitwiseAnd'=>'BitwiseAndCalculation',
         'bitwiseOr'=>'BitwiseOrCalculation'
-
     ];
     /**
      * Bootstrap any application services.
@@ -37,7 +38,7 @@ class AppServiceProvider extends ServiceProvider
     }
 
     /**
-     * Dynamically bind a service to the interface based on the operator chosen
+     * Dynamically bind a concrete service to the interface based on the operator chosen in the calculator form
      *
      * @return void
      */
