@@ -3,20 +3,15 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Http\Request;
+use App\Traits\OperatorTraits;
 
 class AppServiceProvider extends ServiceProvider
 {
 	/**
-	* Array of the operators and their service classes
+	* returns array of the operators and their service classes
     **/
-    protected $operatorClassServices =  [
-        'add'=>'AdditionCalculation',
-        'subtract'=>'SubtractionCalculation',
-        'multiply'=>'MultiplicationCalculation',
-        'divide'=>'DivisionCalculation',
-        'bitwiseAnd'=>'BitwiseAndCalculation',
-        'bitwiseOr'=>'BitwiseOrCalculation'
-    ];
+    use OperatorTraits;
+   
     /**
      * Bootstrap any application services.
      *
@@ -46,6 +41,6 @@ class AppServiceProvider extends ServiceProvider
     {
         $operator = $request->input('operator');
         $service= (array_key_exists($operator, $this->operatorClassServices)) ? ($this->operatorClassServices[$operator]) : "DefaultCalculation";
-        $this->app->bind('App\Repositories\Contracts\CalculationInterface', "App\Repositories\\{$service}");
+        $this->app->bind('App\Repositories\Contracts\CalculationInterface', "App\Services\\{$service}");
     }
 }
