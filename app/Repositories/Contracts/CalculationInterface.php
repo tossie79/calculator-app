@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace App\Repositories\Contracts;
 
 interface CalculationInterface
@@ -12,6 +13,6 @@ interface CalculationInterface
     | as well as get the operator type
     |
     */
-	public function calculate($number1, $number2);
-	public function getOperatorType();
+	public function calculate(float $number1, float $number2):float;
+	public function getOperatorType():string;
 }

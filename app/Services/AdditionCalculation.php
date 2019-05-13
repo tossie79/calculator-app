@@ -1,5 +1,6 @@
 <?php
-namespace App\Repositories;
+declare(strict_types=1);
+namespace App\Services;
 
 use  App\Repositories\Contracts\CalculationInterface;
 
@@ -7,11 +8,11 @@ class AdditionCalculation implements CalculationInterface
 {
 	/**
 	 *This method does an addition calculation of 2 numbers
-	 *@return int
+	 *@return float
      *
     */
 	
-	public function calculate($number1, $number2)
+	public function calculate(float $number1, float $number2):float
 	{
 		return($number1 + $number2);
 	}
@@ -20,7 +21,7 @@ class AdditionCalculation implements CalculationInterface
 	*@return string
     *
     */
-	public function getOperatorType()
+	public function getOperatorType():string
 	{
 		return '+';
 	}
